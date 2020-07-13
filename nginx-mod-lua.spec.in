@@ -45,10 +45,9 @@ Lua script engine module for nginx.
 
 %build
 cd %{_builddir}/nginx-%{_nginxver}
-export CFLAGS="$CFLAGS -Wno-error=cast-function-type"
 export LUAJIT_INC=/usr/include/luajit-2.0
 export LUAJIT_LIB=/usr/lib64
-./configure %(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --add-dynamic-module=../%{_modname}-nginx-module-%{version}
+./configure --with-compat --add-dynamic-module=../%{_modname}-nginx-module-%{version}
 make modules
 
 %install
