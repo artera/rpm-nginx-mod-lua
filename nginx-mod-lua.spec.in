@@ -1,6 +1,6 @@
 Summary: Lua script engine module for nginx
 Name: nginx-mod-lua
-Version: 0.10.17
+Version: 0.10.19
 Release: 1%{?dist}
 Vendor: Artera
 URL: https://github.com/openresty/lua-nginx-module
