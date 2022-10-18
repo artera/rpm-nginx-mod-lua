@@ -44,7 +44,7 @@ Lua script engine module for nginx.
 
 %build
 cd %{_builddir}/nginx-%{_nginxver}
-export LUAJIT_INC=/usr/include/luajit-2.0
+export LUAJIT_INC=/usr/include/luajit-2.1
 export LUAJIT_LIB=/usr/lib64
 ./configure --with-compat --add-dynamic-module=../%{_modname}-nginx-module-%{version}
 make modules
