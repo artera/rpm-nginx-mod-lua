@@ -1,6 +1,6 @@
 Summary: Lua script engine module for nginx
 Name: nginx-mod-lua
-Version: 0.10.17
+Version: 0.10.19
 Release: 1%{?dist}
 Vendor: Artera
 URL: https://github.com/openresty/lua-nginx-module
@@ -26,7 +26,6 @@ BuildRequires: pcre-devel
 BuildRequires: zlib-devel
 BuildRequires: perl-devel
 BuildRequires: gd-devel
-BuildRequires: GeoIP-devel
 BuildRequires: libxslt-devel
 BuildRequires: perl-devel
 BuildRequires: perl(ExtUtils::Embed)
@@ -45,10 +44,9 @@ Lua script engine module for nginx.
 
 %build
 cd %{_builddir}/nginx-%{_nginxver}
-export CFLAGS="$CFLAGS -Wno-error=cast-function-type"
 export LUAJIT_INC=/usr/include/luajit-2.1
 export LUAJIT_LIB=/usr/lib64
-./configure %(nginx -V 2>&1 | grep 'configure arguments' | sed -r 's@^[^:]+: @@') --add-dynamic-module=../%{_modname}-nginx-module-%{version}
+./configure --with-compat --add-dynamic-module=../%{_modname}-nginx-module-%{version}
 make modules
 
 %install
